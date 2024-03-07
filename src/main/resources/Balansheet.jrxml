@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.20.6.final using JasperReports Library version 6.20.6-5c96b6aa8a39ac1dc6b6bea4b81168e16dd39231  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="prescriptionParent" pageWidth="595" pageHeight="842" columnWidth="595" leftMargin="0" rightMargin="0" topMargin="20" bottomMargin="0" uuid="2abc81d8-70d0-4719-b1f6-226cb09b4a9a">
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="One Empty Record"/>
+	<property name="com.jaspersoft.studio.unit." value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.pageHeight" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.pageWidth" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.topMargin" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.bottomMargin" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.leftMargin" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.rightMargin" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.columnWidth" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.columnSpacing" value="pixel"/>
+	<parameter name="HEADER_DATASOURCE" class="net.sf.jasperreports.engine.data.JRBeanCollectionDataSource"/>
+	<parameter name="BALANCESHEET_ASSETS_DATASOURCE" class="net.sf.jasperreports.engine.data.JRBeanCollectionDataSource"/>
+	<parameter name="BALANCESHEET_LIABILITIES_DATASOURCE" class="net.sf.jasperreports.engine.data.JRBeanCollectionDataSource"/>
+	<parameter name="BALANCESHEET_EQUITY_DATASOURCE" class="net.sf.jasperreports.engine.data.JRBeanCollectionDataSource"/>
+	<queryString>
+		<![CDATA[]]>
+	</queryString>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<detail>
+		<band height="45" splitType="Stretch">
+			<subreport>
+				<reportElement x="10" y="0" width="200" height="30" uuid="83c22f6b-5f80-446c-9baf-cb697d97085d"/>
+				<dataSourceExpression><![CDATA[$P{HEADER_DATASOURCE}]]></dataSourceExpression>
+				<subreportExpression><![CDATA["BalanceSheetHeader.jasper"]]></subreportExpression>
+			</subreport>
+		</band>
+		<band height="48">
+			<subreport>
+				<reportElement x="10" y="0" width="200" height="39" uuid="e14cf8ea-c909-441c-8ce4-222398171191"/>
+				<dataSourceExpression><![CDATA[$P{BALANCESHEET_ASSETS_DATASOURCE}]]></dataSourceExpression>
+				<subreportExpression><![CDATA["Assets.jasper"]]></subreportExpression>
+			</subreport>
+		</band>
+		<band height="45">
+			<subreport>
+				<reportElement x="20" y="0" width="200" height="20" uuid="2b7b882c-bee9-485a-94bd-61d840cb79ce"/>
+				<dataSourceExpression><![CDATA[$P{BALANCESHEET_LIABILITIES_DATASOURCE}]]></dataSourceExpression>
+				<subreportExpression><![CDATA["Liabilities.jasper"]]></subreportExpression>
+			</subreport>
+		</band>
+		<band height="43">
+			<subreport>
+				<reportElement x="10" y="0" width="200" height="30" uuid="eda934ce-f59e-4a4d-8e80-aef475175ff0"/>
+				<dataSourceExpression><![CDATA[$P{BALANCESHEET_EQUITY_DATASOURCE}]]></dataSourceExpression>
+				<subreportExpression><![CDATA["Shareholder'sEquity.jasper"]]></subreportExpression>
+			</subreport>
+		</band>
+	</detail>
+	<pageFooter>
+		<band height="54" splitType="Stretch">
+			<textField>
+				<reportElement x="380" y="24" width="80" height="30" uuid="bd41c43f-db42-429a-b6b5-5013c9ea71a1"/>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression><![CDATA["Page " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report">
+				<reportElement x="460" y="24" width="90" height="30" uuid="4a4595cb-095b-4f58-a47a-b627317fc976"/>
+				<textElement textAlignment="Left"/>
+				<textFieldExpression><![CDATA[" of " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+</jasperReport>
